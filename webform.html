@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QNS Demo Form</title>
+</head>
+<body style="background-color:#0a0f2c; color:#00ffff; font-family:sans-serif; padding:2rem;">
+    <h1>QNS Job Application</h1>
+    <form method="POST" action="http://localhost:5678/webhook/your-webhook-id">
+        <label for="name">Full Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email Address:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="resume">Resume Link:</label><br>
+        <input type="url" id="resume" name="resume" required><br><br>
+
+        <input type="submit" value="Submit Application">
+    </form>
+</body>
+</html>
