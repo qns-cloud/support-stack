@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>QNS | Application Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       background-color: #0a0f2c;
@@ -14,25 +15,32 @@
       justify-content: center;
       min-height: 100vh;
       margin: 0;
+      padding: 2rem;
     }
     h1 {
       margin-bottom: 1rem;
       text-shadow: 0 0 8px #00ffff;
+      font-size: 2rem;
     }
     form {
-      background: rgba(10, 15, 44, 0.85);
+      background: rgba(10, 15, 44, 0.9);
       border: 2px solid #00ffff;
       border-radius: 12px;
       padding: 2rem;
-      width: 300px;
-      box-shadow: 0 0 12px #00ffff;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 15px #00ffff;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
     }
     input[type="text"],
     input[type="email"],
     input[type="url"] {
       width: 100%;
       padding: 0.5rem;
-      margin-top: 0.5rem;
       margin-bottom: 1rem;
       border: 1px solid #00ffff;
       border-radius: 8px;
@@ -51,15 +59,21 @@
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s;
+      font-family: 'Fira Code', monospace;
     }
     input[type="submit"]:hover {
       background-color: #1ff1ff;
+    }
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #00ffffaa;
     }
   </style>
 </head>
 <body>
   <h1>QNS Application</h1>
-  <form method="POST" action="http://localhost:5678/webhook/your-webhook-id">
+  <form id="applicationForm">
     <label for="name">Full Name:</label>
     <input type="text" id="name" name="name" required>
 
@@ -71,5 +85,30 @@
 
     <input type="submit" value="Submit Application">
   </form>
+
+  <div class="footer">
+    Powered by QNS | Operational Excellence
+  </div>
+
+  <script>
+    const form = document.getElementById('applicationForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      fetch('http://localhost:5678/webhook/your-webhook-id', {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = '/thankyou.html';
+        } else {
+          alert('Submission failed. Please try again.');
+        }
+      })
+      .catch(error => {
+        alert('Submission failed. Please try again.');
+      });
+    });
+  </script>
 </body>
 </html>
