@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QNS | Application Portal</title>
+  <style>
+    body {
+      background-color: #0a0f2c;
+      color: #00ffff;
+      font-family: 'Fira Code', 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #00ffff;
+    }
+    form {
+      background: rgba(10, 15, 44, 0.85);
+      border: 2px solid #00ffff;
+      border-radius: 12px;
+      padding: 2rem;
+      width: 300px;
+      box-shadow: 0 0 12px #00ffff;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="url"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #00ffff;
+      border-radius: 8px;
+      background-color: #020612;
+      color: #00ffff;
+      font-family: 'Fira Code', monospace;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      background-color: #00ffff;
+      color: #0a0f2c;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #1ff1ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>QNS Application</h1>
+  <form method="POST" action="http://localhost:5678/webhook/your-webhook-id">
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="resume">Resume Link:</label>
+    <input type="url" id="resume" name="resume" required>
+
+    <input type="submit" value="Submit Application">
+  </form>
+</body>
+</html>
