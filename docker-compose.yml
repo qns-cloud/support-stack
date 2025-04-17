@@ -1,6 +1,14 @@
 version: '3.8'
 
 services:
+  webform-server:
+    image: nginx:alpine
+    container_name: webform-server
+    restart: unless-stopped
+    ports:
+      - "8088:80"
+    volumes:
+      - webform:/usr/share/nginx/html:ro
   redis:
     image: redis:latest
     container_name: redis
@@ -77,6 +85,7 @@ services:
       - netdata_cache:/var/cache/netdata
 
 volumes:
+  webform:
   postgres_data:
   minio_data:
   vaultwarden_data:
